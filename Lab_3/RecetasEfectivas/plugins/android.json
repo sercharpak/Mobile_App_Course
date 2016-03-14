@@ -1,0 +1,21 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "moviles.uniandes.edu.co"
+        },
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "moviles.uniandes.edu.co"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "moviles.uniandes.edu.co"
+        }
+    },
+    "dependent_plugins": {}
+}
