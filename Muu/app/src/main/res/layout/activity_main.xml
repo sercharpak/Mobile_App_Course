@@ -27,5 +27,12 @@
         android:layout_height="wrap_content"
         android:onClick="verCalendario"
         android:text="Ver Calendario" />
+    <Button
+        android:id="@+id/btnShowLocation"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="mapActivity"
+        android:text="Mostrar Ubicación" />
+
 
 </LinearLayout>

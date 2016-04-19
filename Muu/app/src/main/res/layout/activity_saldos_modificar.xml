@@ -25,5 +25,11 @@
             android:textSize="20sp">
 
         </ListView>
+        <Button
+        android:id="@+id/finVaca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="vacaFin"
+        android:text="Finalizar Vaca" />
     </LinearLayout>
 </ScrollView>

@@ -3,12 +3,12 @@ package com.example.tutis_000.muu;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.provider.ContactsContract;
@@ -21,18 +21,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 //For the Date picking.
-import android.app.DialogFragment;
 
-import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
-import Mundo.Ingrediente;
+import Mundo.Vaca;
 import Mundo.Participante;
-import Mundo.RecetasEfectivas;
+import Mundo.Muu;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * Created by tutis_000 on 27/02/2016.
@@ -92,10 +94,10 @@ public class AgregarParticipantesActivity extends Activity {
      * Numero telefónico del contacto seleccionado
      */
     private String numeroTelefonico;
-    private String nombreVaca;
+    protected String nombreVaca;
 
     private ListView mList;
-    private RecetasEfectivas mundo = null;
+    private Muu mundo = null;
 
     /*
     //Manejo de DatePicker
@@ -114,7 +116,7 @@ public class AgregarParticipantesActivity extends Activity {
         btContactos = (Button) findViewById(R.id.button1Contacto);
         btCalendario = (Button) findViewById(R.id.button1Calendario);
         if (mundo == null) {
-            mundo = RecetasEfectivas.darInstancia();
+            mundo = Muu.darInstancia();
         }
 
 
@@ -197,7 +199,7 @@ public class AgregarParticipantesActivity extends Activity {
                         showDialog(DIALOGO_ERROR);
                     }
                     mList = (ListView) findViewById(R.id.listaParticipantes);
-                    String[] ingredientes = RecetasEfectivas.darInstancia().darListaParticipantes(nombreVaca);
+                    String[] ingredientes = Muu.darInstancia().darListaParticipantes(nombreVaca);
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.lista_item, R.id.label, ingredientes);
                     mList.setAdapter(adapter);
                     mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -302,9 +304,9 @@ public class AgregarParticipantesActivity extends Activity {
                 fos = this.openFileOutput("vacamuu", Context.MODE_PRIVATE);
                 ObjectOutputStream os = new ObjectOutputStream(fos);
 
-                ArrayList<Ingrediente> in = mundo.getIngredientes();
+                ArrayList<Vaca> in = mundo.getVacas();
                     os.writeObject(in);
-                    Log.d("impr:", "en teoria guardó");
+                    Log.d("Persistence", "en teoria guardó");
 
                 os.close();
                 fos.close();
@@ -316,12 +318,72 @@ public class AgregarParticipantesActivity extends Activity {
             //TODO Aca persiste el calendario.
             //Esta persistiendo solo.
 
-
+            try {
+                new HTTPPostTask().execute();
+                Log.e("HTTP TEST", "HTTP SUCCESS: ");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             Intent i = new Intent(this, SaldosVacaActivity.class);
             i.putExtra("nombreVaca", nombreVaca);
             startActivity(i);
 
 
+        }
+    }
+
+    /*
+         * Method to test Posting HTTP
+         */
+    class HTTPPostTask extends AsyncTask<String, Integer, String> {
+
+        private Exception exception;
+        public String longitude;
+        public String latitude;
+
+        public Response testHTTPPOST_1() throws IOException {
+            OkHttpClient client = new OkHttpClient();
+
+            MediaType mediaType = MediaType.parse("application/json");
+            RequestBody body = RequestBody.create(mediaType, "{\"nombre\":\"Vaca_1\",\"descripcion\":\"Descrp_1\"}");
+            Request request = new Request.Builder()
+                    .url("http://fast-savannah-95487.herokuapp.com/muu/vacas")
+                    .post(body)
+                    .addHeader("content-type", "application/json")
+                    .addHeader("cache-control", "no-cache")
+                    .build();
+
+            Response response = client.newCall(request).execute();
+            return response;
+        }
+
+        public Response testHTTPPOST_2() throws IOException {
+            OkHttpClient client = new OkHttpClient();
+
+            MediaType mediaType = MediaType.parse("application/json");
+            RequestBody body = RequestBody.create(mediaType, "{\"nombre\":\""+nombreVaca+"\",\"descripcion\":\"Descrp_1\"}");
+            Request request = new Request.Builder()
+                    .url("http://fast-savannah-95487.herokuapp.com/muu/vacas")
+                    .post(body)
+                    .addHeader("content-type", "application/json")
+                    .addHeader("cache-control", "no-cache")
+                    .build();
+
+            Response response = client.newCall(request).execute();
+            return response;
+        }
+
+
+        @Override
+        protected String doInBackground(String[] params) {
+            try {
+                testHTTPPOST_1();
+                testHTTPPOST_2();
+                return "Success";
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
         }
     }
 

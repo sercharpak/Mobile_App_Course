@@ -10,19 +10,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
-import Mundo.Ingrediente;
-import Mundo.RecetasEfectivas;
+import Mundo.Muu;
+import Mundo.Vaca;
 
 /**
- * Created by tutis_000 on 02/03/2016.
+ * Clase creada para la modificación de la información de una vaca
  */
 public class ModificarVacaActivity extends Activity {
-    private RecetasEfectivas mundo = null;
+    private Muu mundo = null;
     private ListView mList;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -36,12 +35,12 @@ public class ModificarVacaActivity extends Activity {
             Log.d("impr:", "hay file");
             ObjectInputStream is = new ObjectInputStream(fis);
 
-            ArrayList<Ingrediente> simpleClass = (ArrayList<Ingrediente>) is.readObject();
-            mundo = RecetasEfectivas.darInstancia();
+            ArrayList<Vaca> simpleClass = (ArrayList<Vaca>) is.readObject();
+            mundo = Muu.darInstancia();
             for(int i =0; i<simpleClass.size();i++) {
 
-                if(!mundo.hayIngrediente(simpleClass.get(i).getNombre())) {
-                    mundo.agregarIngrediente(simpleClass.get(i));
+                if(!mundo.hayVaca(simpleClass.get(i).getNombre())) {
+                    mundo.agregarVaca(simpleClass.get(i));
                     Log.d("impr", "hay " + simpleClass.get(i).getNombre());
                 }
             }
@@ -53,7 +52,7 @@ public class ModificarVacaActivity extends Activity {
         }
 
         mList= (ListView) findViewById(R.id.listaVacas);
-        String[] ingredientes= mundo.darListaIngredientes();
+        String[] ingredientes= mundo.darListaVacas();
         ArrayAdapter<String> adapter= new ArrayAdapter<String>(this, R.layout.lista_item, R.id.label, ingredientes);
         mList.setAdapter(adapter);
         mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -2,32 +2,18 @@
 <items version="2" >
 
     <item
-        jar="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jar="/home/shernand/Documents/2016-1/Moviles/Muu/app/libs/okhttp-3.2.0.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/classes-56890d7aa04c9e654190abd466888d6f12de8167.jar" />
+        sha1="f7873a2ebde246a45c2a8d6f3247108b4c88a879">
+        <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/okhttp-3.2.0-6b62848a57ab3554f10bc5316f33283e12d9afe2.jar" />
     </item>
     <item
-        jar="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jar="/home/shernand/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.7.0/1dc44f4cec20a64cebb68b90b4218f82ac7948b1/okio-1.7.0.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/classes-3385fb152a82c5b43b5397bfdd3c383d32d55bdd.jar" />
-    </item>
-    <item
-        jar="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-0cb2dbb1f7264a5cc90a551ee6f198cbfc5c878a.jar" />
-    </item>
-    <item
-        jar="/home/shernand/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-dec760f28f9955cb11e1fb7061a6079cd1d7592b.jar" />
+        sha1="1dc44f4cec20a64cebb68b90b4218f82ac7948b1">
+        <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/okio-1.7.0-ad5faf99adb323a894c2f2cab76a65b9046ab5f6.jar" />
     </item>
 
 </items>

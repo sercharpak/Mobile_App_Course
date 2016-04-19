@@ -9,8 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import Mundo.Ingrediente;
-import Mundo.RecetasEfectivas;
+import Mundo.Muu;
+import Mundo.Vaca;
 
 public class CrearVacaActivity extends Activity {
     /**
@@ -57,8 +57,8 @@ public class CrearVacaActivity extends Activity {
 
 
                 if (intCosto > 0) {
-                    Ingrediente ingrediente = new Ingrediente(nombre, intCosto);
-                    RecetasEfectivas.darInstancia().agregarIngrediente(ingrediente);
+                    Vaca vaca = new Vaca(nombre, intCosto);
+                    Muu.darInstancia().agregarVaca(vaca);
                     showDialog("Vaca creada", "Se agregó la vaca correctamente.");
                     Intent intent = new Intent(this, AgregarParticipantesActivity.class);
                     intent.putExtra("vaca", nombre);

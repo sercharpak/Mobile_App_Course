@@ -9,7 +9,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,15 +18,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import Mundo.Ingrediente;
-import Mundo.Participante;
-import Mundo.RecetasEfectivas;
+import Mundo.Muu;
+import Mundo.Vaca;
 
 /**
  * Created by shernand on 3/3/16.
  */
 public class VerVacaActivity extends Activity {
-    private RecetasEfectivas mundo = null;
+    private Muu mundo = null;
 
     private String nombreVaca;
     private String id_evento;
@@ -37,7 +35,7 @@ public class VerVacaActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_vaca);
-        mundo = RecetasEfectivas.darInstancia();
+        mundo = Muu.darInstancia();
         Intent ind = getIntent();
         Uri uriEvents = ind.getData();
         if (uriEvents != null) {
@@ -49,12 +47,12 @@ public class VerVacaActivity extends Activity {
 
                 cursor.moveToFirst();
                 id_evento = cursor.getString(0);
-                ArrayList<Ingrediente> ingredientes = mundo.getIngredientes();
-                for (int i = 0; i < ingredientes.size(); i++) {
-                    Ingrediente ingrediente = ingredientes.get(i);
-                    if (ingrediente.getId_evento().equals(id_evento)) {
-                        nombreVaca = ingrediente.getNombre();
-                        llenarCampos(ingrediente);
+                ArrayList<Vaca> vacas = mundo.getVacas();
+                for (int i = 0; i < vacas.size(); i++) {
+                    Vaca vaca = vacas.get(i);
+                    if (vaca.getId_evento().equals(id_evento)) {
+                        nombreVaca = vaca.getNombre();
+                        llenarCampos(vaca);
                     }
                 }
             } catch (Exception e) {
@@ -64,7 +62,7 @@ public class VerVacaActivity extends Activity {
         }
     }
 
-    private void llenarCampos(Ingrediente ing)
+    private void llenarCampos(Vaca ing)
     {
         TextView txt_nombre = (TextView) findViewById(R.id.text_Nombre);
         TextView text_valor = (TextView) findViewById(R.id.text_valor);

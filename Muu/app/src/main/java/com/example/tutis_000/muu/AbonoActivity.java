@@ -11,8 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import Mundo.Participante;
-import Mundo.RecetasEfectivas;
-import android.support.v4.content.IntentCompat;
+import Mundo.Muu;
 
 /**
  * Created by tutis_000 on 02/03/2016.
@@ -30,7 +29,7 @@ public class AbonoActivity extends Activity {
 
         Intent i = getIntent();
         String nombre = i.getStringExtra("par");
-        par = RecetasEfectivas.darInstancia().darParticipante(nombre);
+        par = Muu.darInstancia().darParticipante(nombre);
         if (par != null) {
             TextView txtNombre = (TextView) findViewById(R.id.txtNombrePar);
             txtNombre.setText(par.getNombre());

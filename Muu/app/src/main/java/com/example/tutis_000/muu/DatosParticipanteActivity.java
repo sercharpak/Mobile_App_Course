@@ -5,15 +5,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import Mundo.Ingrediente;
 import Mundo.Participante;
-import Mundo.RecetasEfectivas;
+import Mundo.Muu;
 
 /**
  * Created by tutis_000 on 27/02/2016.
@@ -31,7 +29,7 @@ public class DatosParticipanteActivity extends Activity {
 
         Intent i = getIntent();
         String nombre = i.getStringExtra("participante");
-        par = RecetasEfectivas.darInstancia().darParticipante(nombre);
+        par = Muu.darInstancia().darParticipante(nombre);
         if (par != null) {
             TextView txtNombre = (TextView) findViewById(R.id.txtNombrePart);
             txtNombre.setText(par.getNombre());

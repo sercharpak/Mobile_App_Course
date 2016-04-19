@@ -1,0 +1,8 @@
+g01/muu/enums/TipoUsuarioEnum.class
+g01/muu/models/Vaca.class
+g01/muu/models/TipoUsuario.class
+g01/muu/services/MuuServices.class
+g01/muu/models/VacaDTO.class
+g01/muu/main/PersistenceManager.class
+g01/muu/models/TipoUsuarioDTO.class
+g01/muu/main/Main.class

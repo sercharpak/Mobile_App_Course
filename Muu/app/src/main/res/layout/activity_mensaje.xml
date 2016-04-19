@@ -24,13 +24,22 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/buttonFacebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:onClick="onMessengerButtonClicked"
+            android:text="Enviar por Facebook" />
+
         <Button
             android:id="@+id/button1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="33dp"
             android:onClick="enviarSMS"
-            android:text="Enviar Mensaje" />
+            android:text="Enviar SMS" />
 
     </LinearLayout>
 </ScrollView>

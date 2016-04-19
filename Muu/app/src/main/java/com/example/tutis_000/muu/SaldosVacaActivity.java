@@ -10,14 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import Mundo.RecetasEfectivas;
+import Mundo.Muu;
 
 /**
  * Created by tutis_000 on 28/02/2016.
  */
 public class SaldosVacaActivity extends Activity {
 
-    private RecetasEfectivas mundo = null;
+    private Muu mundo = null;
 
     private ListView mList;
     private String nombreVaca;
@@ -27,12 +27,12 @@ public class SaldosVacaActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_saldos);
-        mundo = RecetasEfectivas.darInstancia();
+        mundo = Muu.darInstancia();
         Intent i = getIntent();
         nombreVaca = i.getStringExtra("nombreVaca");
         Log.d("impr","vaca"+nombreVaca);
         mList = (ListView) findViewById(R.id.listaSaldos);
-        RecetasEfectivas mundo =RecetasEfectivas.darInstancia();
+        Muu mundo = Muu.darInstancia();
         String[] ingredientes = mundo.darListaParticipantesconDeuda(nombreVaca);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.lista_item, R.id.label, ingredientes );
         mList.setAdapter(adapter);
