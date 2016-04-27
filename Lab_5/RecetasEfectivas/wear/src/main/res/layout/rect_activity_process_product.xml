@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="uniandes.edu.co.mercamovilwear.processProduct"
+    tools:deviceIds="wear_round"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/nameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/product_default"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/priceTxt"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/product_default_price"
+        android:textSize="15sp"/>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/boughtBtn"
+            android:layout_marginRight="10dp"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_check"
+            android:onClick="boughtClick"/>
+        <Button
+            android:id="@+id/skipBtn"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_skip"
+            android:onClick="skipClick"/>
+        <Button
+            android:id="@+id/missingBtn"
+            android:layout_marginLeft="10dp"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_x"
+            android:onClick="missingClick"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

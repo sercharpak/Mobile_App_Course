@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">RecetasEfectivas</string>
+    <string name="action_settings">Settings</string>
+    <string name="menuAgregarIngr">Agregar Ingrediente</string>
+    <string name="menuAgregarRec">Agregar Receta</string>
+    <string name="menuVerIngrts">Ver Ingredientes</string>
+    <string name="menuVerReceta">Ver Recetas</string>
+    <string name="menuCalcComida">Calcular Comida</string>
+    <string name="btnCalcular">Calcular Costos</string>
+    <string name="btnEnviarInv">Enviar Invitación SMS</string>
+    <string name="ayuda">Ayuda</string>
+    <string name="bodyAyuda">Recetas Efectivas (RE) es una aplicación móvil que permite al usuario programar sus comidas de acuerdo con sus preferencias culinarias y las existencias de ingredientes que tiene en su despensa. Además, permite hacer un seguimiento de los invitados a cada una de sus experiencias culinarias, de manera que pueda sorprenderlos con sus habilidades en la cocina.</string>
+    <string name="txtRecetas">Recetas</string>
+    <string name="txtCantidad">Cantidad</string>
+    <string name="txtIngredientes">Ingredientes</string>
+    <string name="txtSeleccionarPlatos">Seleccione los platos que conformarán la comida,</string>
+    <string name="txtEntrada">Entrada</string>
+    <string name="txtPlatoFuerte">Plato Fuente</string>
+    <string name="txtGuarnicion">Guarnición</string>
+    <string name="txtPostre">Postre</string>
+    <string name="seleccInvitados">Seleccionar invitados</string>
+    <string name="txtNombre">Nombre</string>
+    <string name="txtCostoUnitario">Costo Unitario</string>
+    <string name="txtUnidades">Unidades disponibles</string>
+    <string name="txtUnidadMedida">Unidad de medida</string>
+    <string name="txtDescripcion">Descripción</string>
+    <string name="txtNumCalorias">Número de calorías</string>
+    <string name="txtNumPersonas">Número de personas</string>
+    <string name="txtTiempo">Tiempo</string>
+    <string name="txtTipo">Tipo</string>
+    <string name="informacionIngrediente">Información Ingrediente</string>
+    <string name="txtReceta">Receta</string>
+    <string name="title_activity_info">Info Activity</string>
+    <string name="title_activity_info_ingrediente" >Info Ingrediente Activity</string>
+    <string name="title_activity_crear_ingrediente" >Crear Ingrediente Activity </string>
+    <string name="title_activity_crear_receta" >Crear Receta Activity</string>
+    <string name="title_activity_agregar_ingredientas_rec" >Agregar Ingredientes a Receta</string>
+    <string name="title_activity_ver_recetas" >Ver recetas</string>
+    <string name="title_activity_info_receta" >Info receta</string>
+    <string name="title_activity_calcular_costos" >Calcular Costos</string>
+    <string name="title_activity_ver_ingredientes">Ver Ingredientes</string>
+    <string-array name="unidadesMedida">
+        <item>Cucharada</item>
+        <item>Vaso</item>
+        <item>cm3</item>
+        <item>gr</item>
+        <item>Pisca</item>
+    </string-array>
+    <string-array name="tipoReceta">
+        <item>Entrada Fria</item>
+        <item>Ensalada</item>
+        <item>Sopa</item>
+        <item>Entrada Caliente</item>
+        <item>Carne</item>
+        <item>Pollo</item>
+        <item>Pescado</item>
+        <item>Guarnición</item>
+        <item>Postre</item>
+        <item>Salsa</item>
+    </string-array>
+    <string name="action_refresh">Refresh</string>
+</resources>

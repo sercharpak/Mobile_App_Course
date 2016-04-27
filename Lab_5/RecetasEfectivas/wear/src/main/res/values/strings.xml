@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Recetas Efectivas</string>
+    <string name="hello_round">Hello Round World!</string>
+    <string name="hello_square">Hello Square World!</string>
+    <string name="compras">Hacer compras</string>
+    <string name="comenzar">¡Empecemos!</string>
+    <string name="product_default">product name</string>
+    <string name="product_default_price">$0</string>
+    <string name="swipe_right">Swipe Right</string>
+    <string name="empty_list">Empty List</string>
+</resources>
