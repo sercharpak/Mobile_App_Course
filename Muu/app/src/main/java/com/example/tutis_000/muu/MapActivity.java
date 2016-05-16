@@ -20,9 +20,17 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Clase para mostrar en un mapa la ubicacion.
@@ -133,13 +141,59 @@ public class MapActivity extends FragmentActivity implements LocationListener  {
 
                     // Getting longitude of the current location
                     double longitude = location.getLongitude();
-
+                    //TODO esto deberia desaparecer. Es para la prueba de visualizacion.
                     // Creating a LatLng object for the current location
-                    LatLng latLng = new LatLng(latitude, longitude);
+                    LatLng latLng_1 = new LatLng(4.633377, -74.063566);
+                    LatLng latLng_2 = new LatLng(4.633376, -74.063564);
+                    LatLng latLng_3 = new LatLng(4.633376, -74.063565);
+                    int SDK_INT = android.os.Build.VERSION.SDK_INT;
+                    if (SDK_INT > 8)
+                    {
+                        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                                .permitAll().build();
+                        StrictMode.setThreadPolicy(policy);
+                        //your codes here
+                        try {
+                            OkHttpClient client = new OkHttpClient();
+                            Request request = new Request.Builder()
+                                    .url("http://5d74cdeb.ngrok.io/todo/api/v1.0/tasks")
+                                    .build();
+                            Response responses = null;
+
+                            try {
+                                responses = client.newCall(request).execute();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            String jsonData = responses.body().string();
+                            JSONObject Jobject = new JSONObject(jsonData);
+                            JSONArray Jarray = Jobject.getJSONArray("tasks");
+
+                            for (int i = 0; i < Jarray.length(); i++) {
+                                JSONObject object     = Jarray.getJSONObject(i);
+                                Log.d("map:", "objeto" + i);
+                                double latitude_i =  object.getDouble("latitude");
+                                double longitude_i =  object.getDouble("longitude");
+                                LatLng latLng_i = new LatLng(latitude_i, longitude_i);
+                                googleMap.addMarker(new MarkerOptions().position(latLng_1).title("Cluster "+i));
+                                Toast.makeText(getApplicationContext(), "Hay un cluster en las coordenadas: "+latitude_i+", "+longitude_i , Toast.LENGTH_LONG).show();
+                            }
+                        }
+                        catch(Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+
+
+
+
+                    googleMap.addMarker(new MarkerOptions().position(latLng_1).title("Gabriel"));
+                    googleMap.addMarker(new MarkerOptions().position(latLng_2).title("Valentina"));
+                    googleMap.addMarker(new MarkerOptions().position(latLng_3).title("Yvan"));
 
                     myPosition = new LatLng(latitude, longitude);
 
-                    googleMap.addMarker(new MarkerOptions().position(myPosition).title("Start"));
+                    googleMap.addMarker(new MarkerOptions().position(myPosition).title("Yo"));
                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myPosition, 13));
 
                     CameraPosition cameraPosition = new CameraPosition.Builder()

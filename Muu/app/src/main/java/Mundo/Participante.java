@@ -59,5 +59,7 @@ public class Participante implements Serializable {
     public void cambioPago(int pago2){
         pago+=pago2;
     }
-
+    public void cambioDeuda(int pago2){
+        pago+=pago2;
+    }
 }

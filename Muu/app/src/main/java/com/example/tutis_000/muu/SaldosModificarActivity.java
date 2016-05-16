@@ -7,7 +7,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.support.v4.view.GestureDetectorCompat;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,11 +34,15 @@ import okhttp3.Response;
 /**
  * Created by tutis_000 on 02/03/2016.
  */
-public class SaldosModificarActivity extends Activity {
+public class SaldosModificarActivity extends Activity implements GestureDetector.OnGestureListener,GestureDetector.OnDoubleTapListener{
     private Muu mundo = null;
 
     private ListView mList;
     protected String nombreVaca;
+    private static final int SWIPE_THRESHOLD = 100;
+    private static final int SWIPE_VELOCITY_THRESHOLD = 100;
+
+    private GestureDetectorCompat mDetector;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,6 +58,8 @@ public class SaldosModificarActivity extends Activity {
         String[] ingredientes = mundo.darListaParticipantesconDeuda(nombreVaca);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.lista_item, R.id.label, ingredientes );
         mList.setAdapter(adapter);
+        mDetector = new GestureDetectorCompat(this,this);
+        mDetector.setOnDoubleTapListener(this);
         mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View view,
                                     int position, long id) {
@@ -109,6 +119,9 @@ public class SaldosModificarActivity extends Activity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -187,5 +200,91 @@ public class SaldosModificarActivity extends Activity {
                 return null;
             }
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+
+
+        this.mDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean onDown(MotionEvent e) {
+        Log.d("IMP:", "Down");
+        return true;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+        Log.d("IMP:", "long press");
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        boolean result = false;
+        try {
+            float diffY = e2.getY() - e1.getY();
+            float diffX = e2.getX() - e1.getX();
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+                    if (diffX > 0) {
+                        //onSwipeRight();
+
+                    } else {
+                        //onSwipeLeft();
+
+                    }
+                }
+                result = true;
+            }
+            else if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
+                if (diffY > 0) {
+                    //onSwipeBottom();
+                } else {
+                    //onSwipeTop();
+                }
+            }
+            result = true;
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public boolean onSingleTapConfirmed(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onDoubleTap(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onDoubleTapEvent(MotionEvent e) {
+
+
+        return false;
     }
 }

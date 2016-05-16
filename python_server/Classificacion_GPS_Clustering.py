@@ -128,6 +128,9 @@ plt.title("Silhouette score average vs Number of cluster")
 plt.savefig("./silhouette_score_avg.png",format = "png")
 plt.close(fig)
 
+silhoutte_max = np.max(silhouette_avg_kmeans)
+silhoutte_max_arg = np.argmax(silhouette_avg_kmeans)
+print silhoutte_max_arg
 diff_inertias = np.abs(np.gradient(inertias_kmeans))
 fig = plt.figure(figsize = (8,8))
 plt.grid()
@@ -238,7 +241,7 @@ for n_clusters in range(2,4):
 # Podemos calcular cuantos puntos quedan mal clasificados
 
 #ya sabemos que 2 es el numero optimo
-das_estimator = KMeans(n_clusters = 2)
+das_estimator = KMeans(n_clusters = silhoutte_max_arg+1)
 das_fit = das_estimator.fit(X,Y)
 das_predict = das_fit.predict(X)
 #Le sumamos 1 ya que da resultados en [0;2] cuando Y tiene valores en [1;3]

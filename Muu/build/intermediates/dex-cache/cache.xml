@@ -2,6 +2,34 @@
 <items version="2" >
 
     <item
+        jar="/home/shernand/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-86d7561303e5388efbc255d63f4c5a1f215c1073.jar" />
+    </item>
+    <item
+        jar="/home/shernand/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-dec760f28f9955cb11e1fb7061a6079cd1d7592b.jar" />
+    </item>
+    <item
+        jar="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="15ad6a46fb8e2ed86556e0b330d738b589dc62c7">
+        <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/classes-c5eb07543b61920a29df74e11190ee1d2cdfab74.jar" />
+    </item>
+    <item
+        jar="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/classes-3385fb152a82c5b43b5397bfdd3c383d32d55bdd.jar" />
+    </item>
+    <item
         jar="/home/shernand/Documents/2016-1/Moviles/Muu/app/libs/okhttp-3.2.0.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -9,11 +37,46 @@
         <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/okhttp-3.2.0-6b62848a57ab3554f10bc5316f33283e12d9afe2.jar" />
     </item>
     <item
+        jar="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-0cb2dbb1f7264a5cc90a551ee6f198cbfc5c878a.jar" />
+    </item>
+    <item
+        jar="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/classes-56890d7aa04c9e654190abd466888d6f12de8167.jar" />
+    </item>
+    <item
+        jar="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="04de44f90606c77f3b28cf44861f306290505aac">
+        <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/classes-8087752047b7db951fff5c1ebf83992cdba3fff9.jar" />
+    </item>
+    <item
         jar="/home/shernand/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.7.0/1dc44f4cec20a64cebb68b90b4218f82ac7948b1/okio-1.7.0.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="1dc44f4cec20a64cebb68b90b4218f82ac7948b1">
         <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/okio-1.7.0-ad5faf99adb323a894c2f2cab76a65b9046ab5f6.jar" />
+    </item>
+    <item
+        jar="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/classes-cdc61e9b401abcb5b79b00a7b7a240a502dca0e5.jar" />
+    </item>
+    <item
+        jar="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="/home/shernand/Documents/2016-1/Moviles/Muu/app/build/intermediates/pre-dexed/debug/classes-df964862ae0265dd5e5c03508c901aed9a323191.jar" />
     </item>
 
 </items>

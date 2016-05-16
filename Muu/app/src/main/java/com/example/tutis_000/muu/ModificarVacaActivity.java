@@ -48,27 +48,35 @@ public class ModificarVacaActivity extends Activity {
             fis.close();
         }
         catch(Exception e){
-
+            e.printStackTrace();
         }
 
-        mList= (ListView) findViewById(R.id.listaVacas);
-        String[] ingredientes= mundo.darListaVacas();
-        ArrayAdapter<String> adapter= new ArrayAdapter<String>(this, R.layout.lista_item, R.id.label, ingredientes);
-        mList.setAdapter(adapter);
-        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView parent, View view,
-                                    int position, long id) {
-                // selected item
-                String nombre = ((TextView) view).getText().toString();
 
-                // Launching new Activity on selecting single List Item
-                Intent i = new Intent(getApplicationContext(), SaldosModificarActivity.class);
-                // sending data to new activity
-                i.putExtra("nombreVaca", nombre);
-                startActivity(i);
-            }
 
-        });
+        if (mundo.getVacas().size() > 0){
+            mList= (ListView) findViewById(R.id.listaVacas);
+            String[] vacas= mundo.darListaVacas();
+
+
+            ArrayAdapter<String> adapter= new ArrayAdapter<String>(this, R.layout.lista_item, R.id.label, vacas);
+            mList.setAdapter(adapter);
+            mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                public void onItemClick(AdapterView parent, View view,
+                                        int position, long id) {
+                    // selected item
+                    String nombre = ((TextView) view).getText().toString();
+
+                    // Launching new Activity on selecting single List Item
+                    Intent i = new Intent(getApplicationContext(), SaldosModificarActivity.class);
+                    // sending data to new activity
+                    i.putExtra("nombreVaca", nombre);
+                    startActivity(i);
+                }
+
+            });
+        }
+
+
     }
     @Override
     protected void onResume() {

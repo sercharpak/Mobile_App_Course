@@ -1,11 +1,15 @@
 package com.example.tutis_000.muu;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.CalendarContract.Events;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import com.facebook.FacebookSdk;
 /*
@@ -31,9 +35,13 @@ import android.widget.Toast;
 import Mundo.Muu;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity
+        implements GestureDetector.OnGestureListener,GestureDetector.OnDoubleTapListener{
 
+    private static final int SWIPE_THRESHOLD = 100;
+    private static final int SWIPE_VELOCITY_THRESHOLD = 100;
 
+    private GestureDetectorCompat mDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +56,9 @@ public class MainActivity extends ActionBarActivity {
             //Service GPS
             startService(new Intent(this, GPS_Service.class));
             Log.d("Main Create", "Cargo el GPS Service");
+
+            mDetector = new GestureDetectorCompat(this,this);
+            mDetector.setOnDoubleTapListener(this);
 
     } catch (Exception e) {
         e.printStackTrace();
@@ -121,6 +132,99 @@ public class MainActivity extends ActionBarActivity {
         catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+
+
+        this.mDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean onDown(MotionEvent e) {
+        Log.d("IMP:", "Down");
+        return true;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+        Log.d("IMP:", "long press");
+        Intent intent = new Intent(this, ModificarVacaActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        boolean result = false;
+        try {
+            float diffY = e2.getY() - e1.getY();
+            float diffX = e2.getX() - e1.getX();
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+                    if (diffX > 0) {
+                        //onSwipeRight();
+                        Intent intent = new Intent(Intent.ACTION_EDIT, Events.CONTENT_URI);
+                        startActivity(intent);
+                    } else {
+                        //onSwipeLeft();
+                        Intent intent = new Intent(this, MapActivity.class);
+                        startActivity(intent);
+                    }
+                }
+                result = true;
+            }
+            else if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
+                if (diffY > 0) {
+                    //onSwipeBottom();
+                } else {
+                    //onSwipeTop();
+                }
+            }
+            result = true;
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public boolean onSingleTapConfirmed(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onDoubleTap(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onDoubleTapEvent(MotionEvent e) {
+
+
+
+        Intent intent = new Intent(this, CrearVacaActivity.class);
+        startActivity(intent);
+
+        return false;
     }
 
 

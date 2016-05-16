@@ -177,6 +177,8 @@ public class AgregarParticipantesActivity extends Activity {
                         Uri phoneUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
                         String[] columnas = {ContactsContract.CommonDataKinds.Phone.NUMBER};
                         String seleccion = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + "='" + nombreContacto + "'";
+                        Log.d("imp:", "el contacto es:"+ ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + "='" + nombreContacto + "'  num:"+ContactsContract.CommonDataKinds.Phone.NUMBER);
+
 
                         Cursor c = managedQuery(phoneUri, columnas, seleccion, null, null);
 

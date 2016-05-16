@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="10dp"
-    android:paddingRight="10dp">
+    android:paddingRight="10dp"
+    android:background="#010101">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,27 +17,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Creando vaca"
+            android:textColor="#EDEF6C"
             android:textAppearance="?android:attr/textAppearanceLarge" />
         <Button
             android:id="@+id/button1Contacto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="mostrarSeleccionContactos"
-            android:text="Seleccionar Participantes" />
+            android:text="Seleccionar Participantes"
+            android:background="#EDEF6C"/>
 
         <Button
             android:id="@+id/button1Calendario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="mostrarSeleccionCalendario"
-            android:text="Seleccionar Fecha" />
+            android:text="Seleccionar Fecha"
+            android:background="#EDEF6C"/>
 
         <ListView
             android:id="@+id/listaParticipantes"
             android:layout_width="match_parent"
-            android:layout_height="391dp"
+            android:layout_height="300dp"
             android:padding="10dp"
-            android:textSize="20sp">
+            android:textSize="20sp"
+
+            android:background="#FFFFFF"
+            >
 
         </ListView>
 
@@ -45,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="vacaFin"
+            android:background="#EDEF6C"
             android:text="Finalizar Vaca" />
     </LinearLayout>
 </ScrollView>
