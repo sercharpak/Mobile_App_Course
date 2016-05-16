@@ -3,34 +3,38 @@ from flask import Flask, jsonify, make_response, request, abort, url_for
 
 import numpy as np
 import matplotlib.pyplot as plt
-
+import subprocess
 
 app = Flask(__name__)
 
-tasks = [
-    {
-        'id': 1,
-        'title': u'Buy groceries',
-        'description': u'Milk, Cheese, Pizza, Fruit, Tylenol',
-        'done': False
-    },
-    {
-        'id': 2,
-        'title': u'Learn Python',
-        'description': u'Need to find a good Python tutorial on the web',
-        'done': False
+comando = 'python Classificacion_GPS_Clustering.py'
+process =subprocess.Popen(comando,stdout=subprocess.PIPE, stderr=None, shell=True)
+resultsString=process.communicate()
+print resultsString
+
+data = np.loadtxt('centers.dat')
+
+tasks = []
+i=0
+for center in data:
+    print center
+    task = {
+    'id': i + 1,
+    'latitude': center[0],
+    'longitude': center[1]
     }
-]
+    tasks.append(task)
+    i+=1
+
 
 @app.route('/todo/api/v1.0/tasks', methods=['POST'])
 def create_task():
-    if not request.json or not 'title' in request.json:
+    if not request.json or not 'latitude' in request.json:
         abort(400)
     task = {
         'id': tasks[-1]['id'] + 1,
-        'title': request.json['title'],
-        'description': request.json.get('description', ""),
-        'done': False
+        'latitude': request.json['latitude'],
+        'longitude': request.json.get('longitude')
     }
     tasks.append(task)
     return jsonify({'task': task}), 201
@@ -53,15 +57,12 @@ def update_task(task_id):
         abort(404)
     if not request.json:
         abort(400)
-    if 'title' in request.json and type(request.json['title']) != unicode:
+    if 'latitude' in request.json and type(request.json['latitude']) != unicode:
         abort(400)
-    if 'description' in request.json and type(request.json['description']) is not unicode:
+    if 'longitude' in request.json and type(request.json['longitude']) is not unicode:
         abort(400)
-    if 'done' in request.json and type(request.json['done']) is not bool:
-        abort(400)
-    task[0]['title'] = request.json.get('title', task[0]['title'])
-    task[0]['description'] = request.json.get('description', task[0]['description'])
-    task[0]['done'] = request.json.get('done', task[0]['done'])
+    task[0]['latitude'] = request.json.get('latitude', task[0]['latitude'])
+    task[0]['longitude'] = request.json.get('longitude', task[0]['longitude'])
     return jsonify({'task': task[0]})
 
 @app.route('/todo/api/v1.0/tasks/<int:task_id>', methods=['DELETE'])
